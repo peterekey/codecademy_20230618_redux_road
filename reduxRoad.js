@@ -1,7 +1,8 @@
 const initialWagonState = {
     'supplies': 100,
     'distance': 0,
-    'days': 0
+    'days': 0,
+    'cash': 200
 }
 
 const reducer = (state = initialWagonState, action) => {
@@ -37,6 +38,27 @@ const reducer = (state = initialWagonState, action) => {
                 'days': state.days + 1
             }
         
+        
+        case 'activity/sell':
+            return {
+                ...state,
+                'supplies': state.supplies - 20,
+                'cash': state.cash + 5
+            }
+        
+        case 'activity/buy':
+            return {
+                ...state,
+                'supplies': state.supplies + 25,
+                'cash': state.cash - 15
+            }
+
+        case 'activity/theft':
+            return {
+                ...state,
+                'cash': state.cash / 2
+            }
+
         default:
             return state
     }
@@ -83,3 +105,16 @@ const longTravel = {
 }
 wagon = reducer(wagon, longTravel)
 console.log('Testing new negative supply if/else',wagon)
+
+// Game step 13
+const buySupplies = {
+    type: 'activity/buy'
+}
+wagon = reducer(wagon, buySupplies)
+console.log('Buying supplies', wagon)
+
+wagon = reducer(wagon, {type: 'activity/theft'})
+console.log('Theft', wagon)
+
+wagon = reducer(wagon, {type: 'activity/sell'})
+console.log('Selling', wagon)
