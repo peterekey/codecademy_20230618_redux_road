@@ -49,3 +49,11 @@ const travelDay = {
 }
 wagon = reducer(wagon, travelDay)
 console.log('After travel day', wagon)
+
+// Game step 9
+const gatherSupplies = {
+    type: 'activity/gather',
+    payload: 0
+}
+wagon = reducer(wagon, gatherSupplies)
+console.log('After gather day', wagon)
