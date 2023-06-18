@@ -35,3 +35,9 @@ const reducer = (state = initialWagonState, action) => {
             return state
     }
 }
+
+// Game step 7
+const state = undefined
+const action = {}
+let wagon = reducer(state, action)
+console.log(wagon)
