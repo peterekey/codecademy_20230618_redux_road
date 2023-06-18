@@ -16,11 +16,17 @@ const reducer = (state = initialWagonState, action) => {
             }
         
         case 'activity/travel':
-            return {
-                ...state,
-                'supplies': state.supplies - (action.payload * 20),
-                'distance': state.distance + (action.payload * 10),
-                'days': state.days + action.payload
+            if (state.supplies - (action.payload * 20) < 0) {
+                return {
+                    ...state
+                }
+            } else {
+                return {
+                    ...state,
+                    'supplies': state.supplies - (action.payload * 20),
+                    'distance': state.distance + (action.payload * 10),
+                    'days': state.days + action.payload
+                }
             }
         
         case 'activity/tippedWagon':
@@ -69,3 +75,11 @@ const travelDays = {
 }
 wagon = reducer(wagon, travelDays)
 console.log('After travelling for 3 days', wagon)
+
+// Game step 12
+const longTravel = {
+    type: 'activity/travel',
+    payload: 3
+}
+wagon = reducer(wagon, longTravel)
+console.log('Testing new negative supply if/else',wagon)
