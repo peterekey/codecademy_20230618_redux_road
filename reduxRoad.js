@@ -57,3 +57,7 @@ const gatherSupplies = {
 }
 wagon = reducer(wagon, gatherSupplies)
 console.log('After gather day', wagon)
+
+// Game step 10
+wagon = reducer(wagon, {type: 'activity/tippedWagon'})
+console.log('After tipping wagon', wagon)
