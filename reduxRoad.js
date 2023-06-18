@@ -5,5 +5,8 @@ const initialWagonState = {
 }
 
 const reducer = (state = initialWagonState, action) => {
-
+    switch (action.payload) {
+        default:
+            return state
+    }
 }
