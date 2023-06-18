@@ -13,6 +13,13 @@ const reducer = (state = initialWagonState, action) => {
                 'distance': state.distance,
                 'days': state.days + 1
             }
+        case 'activity/travel':
+            return {
+                ...state,
+                'supplies': state.supplies - (action.payload * 20),
+                'distance': state.distance + (action.payload * 10),
+                'days': state.days + action.payload
+            }
         default:
             return state
     }
