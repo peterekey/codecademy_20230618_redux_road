@@ -41,3 +41,11 @@ const state = undefined
 const action = {}
 let wagon = reducer(state, action)
 console.log(wagon)
+
+// Game step 8
+const travelDay = {
+    type: 'activity/travel',
+    payload: 1
+}
+wagon = reducer(wagon, travelDay)
+console.log('After travel day', wagon)
