@@ -4,3 +4,6 @@ const initialWagonState = {
     'days': 0
 }
 
+const reducer = (state = initialWagonState, action) => {
+
+}
